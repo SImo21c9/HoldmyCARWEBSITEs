@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Dealership</title>
+    <style>
+        h2 {
+            margin: 20px 0;
+            font-family: 'Times New Roman', Times, serif
+        }
+
+        label{
+            font-family: "times new roman";
+            font-size: large;
+        }
+        button{
+            margin-top: 15px;
+            width: 100px;
+            height: 50px;
+        }
+
+        table,th, td {
+            
+        border: lpx solid black;
+        border-collapse: collapse;
+        }
+        th, td{
+            padding-top: 10px;
+            padding-bottom: 20;
+            padding-left: 30px;
+            padding-right: 40;
+        }
+
+        th {
+            background: linear-gradient(45deg, #34495e, #2c3e50);
+            color: white;
+            padding: 15px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+    </style>
+</style>
+<script>//this fully loads the html 
+document.addEventListener("DOMContentLoaded", function() {
+    //buyBtn is declared here
+    const buyBtn = document.getElementById("buyBtn");
+    //here we declare a constant of purchasedlist
+    const purchasedList = document.getElementById("purchasedList");
+
+    //this is an event listener and it will listen for buyBtn to be clicked 
+    buyBtn.addEventListener("click", function() {
+         //here are declared all the constant values. 
+        const name = document.getElementById("carName").value;
+        const model = document.getElementById("carModel").value;
+        const price = document.getElementById("carPrice").value;
+        const year = document.getElementById("carYear").value;
+
+        // if all the boxes are filled it will print them out under purchased 
+        if (name && model && price && year) {
+            const row = purchasedList.insertRow();
+            row.innerHTML = `<td>${name}</td><td>${model}</td><td>${price}</td><td>${year}</td>`;
+            // Clear input fields
+            document.getElementById("carName").value = '';
+            document.getElementById("carModel").value = '';
+            document.getElementById("carPrice").value = '';
+            document.getElementById("carYear").value = '';
+        } else {
+            alert("You have to fill al the fields.");
+        }
+    });
+});</script>
+</head>
+<body style = "background-color:  White;">
+    <h1 style="font-family: TImes new Roman;">Car Dealership</h1>
+    <div class="group">
+        <label for="carName">Name: <input type="text" id="carName"></label>
+        <label for="carModel">Model: <input type="text" id="carModel"></label>
+        <label for="carPrice">Price: <input type="number" id="carPrice"></label>
+        <label for="carYear">Year: <input type="number" id="carYear"></label>
+    </div>
+    <button id="buyBtn">Buy</button>
+    <h2 style="margin-top: 100px; margin-bottom: 10px;">Purchased Cars</h2>
+    <table style="width: 100%;">
+        <thead>
+            <tr> <!-- row-->
+                <th>Name</th> <!-- Column-->
+                <th>Model</th>
+                <th>Price</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody id="purchasedList">
+            <!-- my cars will go here -->
+        </tbody>
+    </table>
+</body>
+</html>
